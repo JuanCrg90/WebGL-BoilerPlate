@@ -1,0 +1,11 @@
+{
+  "name": "webgl-boilerplate",
+  "version": "1.0.0",
+  "description": "A WebGL boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Carlos Ruiz <JuanCrg90@gmail.com>",
+  "license": "MIT"
+}
