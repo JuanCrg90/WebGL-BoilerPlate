@@ -40592,7 +40592,7 @@ var proyect = {
     // Prepare perspective camera
     var VIEW_ANGLE = 45;
     var ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT;
-    var NEAR = 500;
+    var NEAR = 1;
     var FAR = 1000;
 
     this.camera = new _three2.default.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
