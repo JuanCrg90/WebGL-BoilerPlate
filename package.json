@@ -14,7 +14,8 @@
   "author": "Juan Carlos Ruiz <JuanCrg90@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "three": "^0.74.0"
+    "three": "^0.74.0",
+    "three-window-resize": "^1.0.4"
   },
   "devDependencies": {
     "browserify": "^13.0.0",

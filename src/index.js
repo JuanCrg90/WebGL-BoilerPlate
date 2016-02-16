@@ -1,4 +1,5 @@
 import THREE from 'three';
+import WindowResize from 'three-window-resize';
 
 const proyect = {
   scene: null,
@@ -31,6 +32,9 @@ const proyect = {
     this.container = document.createElement('div');
     document.body.appendChild(this.container);
     this.container.appendChild(this.renderer.domElement);
+
+    // Events
+    new WindowResize(this.renderer, this.camera);
 
     // Add Object
     let object;

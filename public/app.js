@@ -1,4 +1,47 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = function (renderer, camera, dimension) {
+
+  /**
+   * @author jeromeetienne / https://github.com/jeromeetienne
+   * @author SebastianNette / https://github.com/SebastianNette
+   */
+
+	dimension = dimension || function () {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight
+    }
+  }
+
+	var callback	= function(){
+		// fetch target renderer size
+		var rendererSize = dimension();
+
+		// notify the renderer of the size change
+		renderer.setSize(rendererSize.width, rendererSize.height)
+
+		// update the camera
+		camera.aspect	= rendererSize.width / rendererSize.height
+		camera.updateProjectionMatrix()
+	}
+
+	// bind the resize event
+	window.addEventListener('resize', callback, false)
+
+	// return .stop() the function to stop watching window resize
+	return {
+		trigger	: function(){
+			callback()
+		},
+  // Stop watching window resize
+		destroy	: function(){
+			window.removeEventListener('resize', callback)
+		}
+	}
+
+}
+
+},{}],2:[function(require,module,exports){
 var self = self || {};// File:src/Three.js
 
 /**
@@ -40568,12 +40611,16 @@ if (typeof exports !== 'undefined') {
   this['THREE'] = THREE;
 }
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 'use strict';
 
 var _three = require('three');
 
 var _three2 = _interopRequireDefault(_three);
+
+var _threeWindowResize = require('three-window-resize');
+
+var _threeWindowResize2 = _interopRequireDefault(_threeWindowResize);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -40607,6 +40654,9 @@ var proyect = {
     this.container = document.createElement('div');
     document.body.appendChild(this.container);
     this.container.appendChild(this.renderer.domElement);
+
+    // Events
+    new _threeWindowResize2.default(this.renderer, this.camera);
 
     // Add Object
     var object = undefined;
@@ -40642,4 +40692,4 @@ if (window.addEventListener) {
   }
 }
 
-},{"three":1}]},{},[2]);
+},{"three":2,"three-window-resize":1}]},{},[3]);
