@@ -11,7 +11,6 @@ const proyect = {
     // Create main scene
     this.scene = new THREE.Scene();
 
-
     const SCREEN_WIDTH = window.innerWidth;
     const SCREEN_HEIGHT = window.innerHeight;
 
@@ -44,8 +43,6 @@ const proyect = {
     object = new THREE.Mesh(geometry, material);
 
     this.scene.add(object);
-
-    // requestAnimationFrame(this.render);
   },
 };
 
@@ -56,12 +53,10 @@ function render() {
   }
 }
 
-
 function initialize() {
   proyect.init();
   render();
 }
-
 
 if (window.addEventListener) {
   window.addEventListener('load', initialize, false);
