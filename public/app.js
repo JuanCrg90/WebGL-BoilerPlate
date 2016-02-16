@@ -40629,6 +40629,7 @@ var proyect = {
   camera: null,
   renderer: null,
   container: null,
+  windowResize: null,
   init: function init() {
     // Create main scene
     this.scene = new _three2.default.Scene();
@@ -40656,7 +40657,7 @@ var proyect = {
     this.container.appendChild(this.renderer.domElement);
 
     // Events
-    new _threeWindowResize2.default(this.renderer, this.camera);
+    this.windowResize = new _threeWindowResize2.default(this.renderer, this.camera);
 
     // Add Object
     var object = undefined;

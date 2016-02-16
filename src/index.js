@@ -6,6 +6,7 @@ const proyect = {
   camera: null,
   renderer: null,
   container: null,
+  windowResize: null,
   init() {
     // Create main scene
     this.scene = new THREE.Scene();
@@ -34,7 +35,7 @@ const proyect = {
     this.container.appendChild(this.renderer.domElement);
 
     // Events
-    new WindowResize(this.renderer, this.camera);
+    this.windowResize = new WindowResize(this.renderer, this.camera);
 
     // Add Object
     let object;
